@@ -11,6 +11,8 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var diceImage: ImageView //promises that variable will be initialized before doing any operations on it
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         rollButton.setOnClickListener{
             rollDice()
         }
+
+        //perform findViewById once onCreate instead of every function call to increase efficiency
+        diceImage = findViewById(R.id.dice_image)
     }
 
     private fun rollDice() {
@@ -34,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.dice_6
         }
 
-        val diceImage: ImageView = findViewById(R.id.dice_image) //the ImageView in activity_main.xml
+
         diceImage.setImageResource(drawableResource)
 
     }
